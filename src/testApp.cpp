@@ -17,7 +17,6 @@ void testApp::setup()
 	udpConnection.Bind(12001);
 	udpConnection.SetNonBlocking(true);
     SplashScreen.loadImage("NostalgiaRoom.tif");
-//    SplashScreen.resize(ofGetScreenWidth(), )
     ofSetFullscreen(true);
     previewText.loadFont("asyouwish.ttf", 42);
 }
@@ -31,7 +30,7 @@ void testApp::update()
     
 	if(message!="") 
     {
-        
+        // Check if there is an existing user in the Room (if the process is running)        
         string status=exec("ps -ax -o etime,command -c | grep Spiral_PrototypeDebug");
         
         
@@ -49,12 +48,6 @@ void testApp::update()
         }
         
         
-//        string oaScriptCommand="open /Users/rahulbudhiraja/Work/of_v0073_osx_release/apps/myApps/Nostalgia_Spiral/bin/Spiral_PrototypeDebug.app --args "+message+" &";
-//        
-//        
-//        system("osascript -e 'tell app \"NostalgiaBackgroundProcess\" to activate");
-//        system("osascript -e 'tell app \"/Users/rahulbudhiraja/Work/of_v0073_osx_release/apps/myApps/NostalgiaBackgroundProcess/bin/NostalgiaBackgroundProcessDebug.app\" to activate'");
-
     }
     
     
@@ -64,16 +57,11 @@ void testApp::update()
 //--------------------------------------------------------------
 void testApp::draw()
 {
-    
-//    cout<<"Time is "<<time<<endl;
-    
+
     SplashScreen.draw(0,0);
     previewText.drawString("Lets take a swing at those memories,Have a seat !", 160, SplashScreen.getHeight()-25);
-    
-    // Have a seat ..
-    
-    //
-    
+   
+   
 }
 
 //--------------------------------------------------------------
@@ -108,7 +96,7 @@ void testApp::mouseReleased(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp::windowResized(int w, int h){
-//    SplashScreen.resize(ofGetScreenWidth(),ofGetScreenHeight());
+
 }
 
 //--------------------------------------------------------------
